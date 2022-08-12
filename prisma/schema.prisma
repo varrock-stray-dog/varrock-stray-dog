@@ -1,0 +1,39 @@
+generator client {
+  provider  = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_URL")
+}
+
+model Settings {
+  id                          String          @id @default(uuid())
+  guildId                     String          @unique @map("guild_id")
+  prefix                      String          @default("~")
+  language                    String          @default("en-US")
+  
+  petsEnabled                 Boolean         @default(true) @map("pets_enabled")
+  petsModeratorRole           String?         @map("pets_moderator_role")
+
+  lootEnabled                 Boolean         @default(true) @map("loot_enabled")
+  lootRequireVerification     Boolean         @default(true) @map("loot_require_verification")
+  lootModeratorRole           String?         @map("loot_moderator_role")
+  
+  createdAt                   DateTime        @default(now()) @map("created_at")
+  updatedAt                   DateTime?       @updatedAt @map("updated_at")
+}
+
+model Pets {
+  id                          String          @id @default(uuid())
+  
+  kc                          Int
+  name                        String
+  date                        DateTime        @default(now())
+  
+  userId                      String          @map("user_id")
+  guildId                     String          @map("guild_id")
+  
+  createdAt                   DateTime        @default(now()) @map("created_at")
+  updatedAt                   DateTime?       @updatedAt @map("updated_at")
+}

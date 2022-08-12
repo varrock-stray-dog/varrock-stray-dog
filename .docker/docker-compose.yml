@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+    web:
+        extends:
+            file: docker-compose.base.yml
+            service: base
+        command: yarn docker:start:web
+        ports:
+            - '$EXPOSED_WEB_PORT:4200'
+    api:
+        extends:
+            file: docker-compose.base.yml
+            service: base
+        command: yarn docker:start:api
+        ports:
+            - '$EXPOSED_API_PORT:3000'
+            - '$EXPOSED_STUDIO_PORT:5555'
+        depends_on:
+            - redis
+            - postgres
+    bot:
+        extends:
+            file: docker-compose.base.yml
+            service: base
+        command: yarn docker:start:bot
+        depends_on:
+            - redis
+    redis:
+        image: redis
+        ports:
+            - '$EXPOSED_REDIS_PORT:6379'
+    postgres:
+        image: postgres
+        environment:
+            - 'POSTGRES_USER=$POSTGRES_USER'
+            - 'POSTGRES_DB=$POSTGRES_NAME'
+            - 'POSTGRES_PASSWORD=$POSTGRES_PASSWORD'
+        ports:
+            - '$EXPOSED_POSTGRES_PORT:5432'

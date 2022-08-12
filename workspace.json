@@ -1,7 +1,13 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
-  "projects": {
-    "bot": "packages/bot"
-  }
+    "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+    "version": 2,
+    "projects": {
+        "api": "apps/api",
+        "bot": "apps/bot",
+        "web": "apps/web",
+        "web-e2e": "apps/web-e2e",
+        "models": "packages/models",
+        "osrs-pets": "packages/osrs-pets",
+        "utilities": "packages/utilities"
+    }
 }

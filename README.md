@@ -1,94 +1,35 @@
+# Varrock Stray Dog
 
+Varrock stray dog is a discord loot & pet tracking bot for Oldschool Runescape.
 
-# VarrockStrayDog
+It utilizes the [lerna](https://github.com/lerna) monotrepo structure for [NestJS](https://github.com/nestjs/nest), [Angular](https://github.com/angular/angular), [Sapphire Framework](https://github.com/sapphiredev/framework) and [other utilities](https://github.com/varrock-stray-dog/Varrock-Stray-Dog/tree/master/packages)
 
-This project was generated using [Nx](https://nx.dev).
+[![Connect to discord](./assets/connect-to-discord.png)](https://discord.com/oauth2/authorize?client_id=746303551722094623&scope=bot&permissions=268627008)
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+## Apps
 
-🔎 **Smart, Fast and Extensible Build System**
+### Web
 
-## Adding capabilities to your workspace
+The website for the bot, this will include a management system to manage your guild's loot & pets. This can also be done through commands.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+### Api
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+The GraphQL api & Microservice for the website and bot to gain information and access to the database.
 
-Below are our core plugins:
+### Bot
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+The Discord bot which communicates with the api (Redis Microservice) and Discord (Necord)
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+## Libraries
 
-## Generate an application
+### @varrock-stray-dog/osrs-pets
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+A collection of all available pets in osrs
 
-> You can use any of the plugins above to generate applications as well.
+### @varrock-stray-dog/utilities
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+Simple utilities for the bot and api to use.
 
-## Generate a library
+### @varrock-stray-dog/models
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@varrock-stray-dog/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+The GraphQL models used by the Api & Bot
