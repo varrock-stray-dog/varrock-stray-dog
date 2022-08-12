@@ -26,6 +26,13 @@ export class UtilsCommand {
     })
     public async onPing(@Context() [interaction]: SlashCommandContext) {
         this._logger.log(`${interaction.user.tag} used ping command`);
-        return interaction.reply({ content: 'Pong command!' });
+        const now = Date.now();
+        await interaction.reply({ content: 'Ping?' });
+
+        const content = `Pong! Bot Latency ${Math.round(
+            interaction.client.ws.ping
+        )}ms. API Latency ${now - interaction.createdTimestamp}ms.`;
+
+        return interaction.editReply(content);
     }
 }
