@@ -18,7 +18,7 @@ RUN yarn build:api
 ## Production
 FROM base as production
 
-COPY . ./
+COPY package.json ./
 COPY --from=build /opt/app/dist ./dist
 COPY --from=build /opt/app/node_modules ./node_modules
 
