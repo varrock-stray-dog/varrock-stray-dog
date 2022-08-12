@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type ApiStatus {
-  bot: BotStatus!
+  bot: BotStatus
   container: String!
   env: String!
   name: String!

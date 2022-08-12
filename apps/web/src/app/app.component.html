@@ -5,3 +5,36 @@
         <p>Loot & Pet tracking Bot</p>
     </div>
 </div>
+
+<div class="server-stats" *ngIf="apiData">
+    <p>API: {{ apiData ? 'Online' : 'Offline' }}</p>
+    <ng-container *ngIf="apiData">
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ apiData?.uptime }}
+        </p>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ apiData?.container }}
+        </p>
+    </ng-container>
+
+    <p>Bot: {{ apiData?.bot ? 'Online' : 'Offline' }}</p>
+    <ng-container *ngIf="apiData?.bot">
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ apiData?.bot?.uptime }}
+        </p>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ apiData?.bot?.container }}
+        </p>
+    </ng-container>
+
+    <br />
+    <p>Guilds: {{ apiData?.bot?.guilds ?? 0 }}</p>
+    <p>Users: {{ apiData?.bot?.users ?? 0 }}</p>
+
+    <br />
+    <a [href]="inviteUrl" target="_INVITE">Invite BETA bot</a>
+</div>

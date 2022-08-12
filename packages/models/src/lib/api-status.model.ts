@@ -10,6 +10,6 @@ export class ApiStatus extends SystemSummary {
     @Field()
     url: string;
 
-    @Field(() => BotStatus)
-    bot: BotStatus;
+    @Field(() => BotStatus, { nullable: true })
+    bot?: BotStatus;
 }

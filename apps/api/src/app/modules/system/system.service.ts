@@ -4,7 +4,7 @@ https://docs.nestjs.com/providers#services
 
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of, timeout } from 'rxjs';
 
 import { ApiStatus, BotStatus } from '@varrock-stray-dog/models';
 import { systemSummary } from '@varrock-stray-dog/utilities';
@@ -24,6 +24,8 @@ export class SystemService {
                 {}
             )
             .pipe(
+                timeout(500),
+                catchError(() => of(null)),
                 map((bot: BotStatus) => ({
                     name: '🐶 Varrock Stray Dog',
                     url: 'https://varrock-stray.dog',
