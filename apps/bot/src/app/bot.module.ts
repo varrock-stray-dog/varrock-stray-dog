@@ -12,7 +12,10 @@ import { events } from './discord/events';
         NecordModule.forRoot({
             token: process.env.BOT_TOKEN,
             intents: [GatewayIntentBits.Guilds],
-            development: [process.env.DEVELOPMENT_GUILD_ID],
+            development:
+                process.env.NODE_ENV === 'development'
+                    ? [process.env.DEVELOPMENT_GUILD_ID]
+                    : false,
         }),
         ApiModule,
     ],

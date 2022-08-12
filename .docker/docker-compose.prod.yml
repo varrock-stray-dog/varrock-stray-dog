@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+    web:
+        image: jurienhamaker/vsd-web
+        env_file: .env
+        tty: true
+        ports:
+            - '$EXPOSED_WEB_PORT:80'
+    api:
+        image: jurienhamaker/vsd-api
+        env_file: .env
+        tty: true
+        depends_on:
+            - redis
+            - postgres
+        ports:
+            - '$EXPOSED_API_PORT:3000'
+    bot:
+        image: jurienhamaker/vsd-bot
+        env_file: .env
+        tty: true
+        depends_on:
+            - redis
+    redis:
+        image: redis
+        ports:
+            - '$EXPOSED_REDIS_PORT:6379'
+    postgres:
+        image: postgres
+        environment:
+            - 'POSTGRES_USER=$POSTGRES_USER'
+            - 'POSTGRES_DB=$POSTGRES_NAME'
+            - 'POSTGRES_PASSWORD=$POSTGRES_PASSWORD'
+        ports:
+            - '$EXPOSED_POSTGRES_PORT:5432'

@@ -5,11 +5,11 @@
     "scripts": {
         "postinstall": "ngcc --properties es2020 browser module main",
         "lint": "nx workspace-lint && ng lint",
-        "prebuild": "rm -rf dist",
+        "prebuild": "rm -rf dist && yarn prisma:generate",
         "build": "nx build",
-        "build:web": "yarn build -c production web",
-        "build:bot": "yarn build -c production bot",
-        "build:api": "yarn build -c production api",
+        "build:web": "yarn build web -c production",
+        "build:bot": "yarn build bot -c production",
+        "build:api": "yarn build api -c production",
         "prisma:studio": "yarn prisma studio",
         "prisma:migrate:save": "yarn prisma migrate dev",
         "prisma:migrate:deploy": "yarn prisma migrate deploy",
@@ -18,7 +18,9 @@
         "docker:prestart": "yarn && yarn prisma:generate",
         "docker:start:api": "yarn docker:prestart && nx run api:serve",
         "docker:start:bot": "yarn docker:prestart && nx run bot:serve",
-        "docker:start:web": "yarn && nx run web:serve --host 0.0.0.0 --disable-host-check"
+        "docker:start:web": "yarn && nx run web:serve --host 0.0.0.0 --disable-host-check",
+        "prod:api": "node ./dist/apps/api/main.js",
+        "prod:bot": "node ./dist/apps/bot/main.js"
     },
     "private": true,
     "resolutions": {
