@@ -1,8 +1,8 @@
-# Varrock Stray Dog
+# [Varrock Stray Dog](https://varrock-stray.dog)
 
 Varrock stray dog is a discord loot & pet tracking bot for Oldschool Runescape.
 
-It utilizes the [lerna](https://github.com/lerna) monotrepo structure for [NestJS](https://github.com/nestjs/nest), [Angular](https://github.com/angular/angular), [Sapphire Framework](https://github.com/sapphiredev/framework) and [other utilities](https://github.com/varrock-stray-dog/Varrock-Stray-Dog/tree/master/packages)
+It utilizes the [@nrwl/nx](https://github.com/nrwl/nx) monorepo structure for [NestJS](https://github.com/nestjs/nest), [Angular](https://github.com/angular/angular), [Necord](https://github.com/necordjs/necord) and [other utilities](https://github.com/varrock-stray-dog/Varrock-Stray-Dog/tree/master/packages)
 
 [![Connect to discord](./assets/connect-to-discord.png)](https://discord.com/oauth2/authorize?client_id=746303551722094623&scope=bot&permissions=268627008)
 
