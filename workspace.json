@@ -4,10 +4,11 @@
     "projects": {
         "api": "apps/api",
         "bot": "apps/bot",
-        "web": "apps/web",
-        "web-e2e": "apps/web-e2e",
+        "item-sync": "packages/item-sync",
         "models": "packages/models",
         "osrs-pets": "packages/osrs-pets",
-        "utilities": "packages/utilities"
+        "utilities": "packages/utilities",
+        "web": "apps/web",
+        "web-e2e": "apps/web-e2e"
     }
 }

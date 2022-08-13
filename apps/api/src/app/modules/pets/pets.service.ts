@@ -27,7 +27,6 @@ export class PetsService {
 
     searchAll(query: string): IPetMetaData[] {
         const results = this._search(query);
-        console.log(JSON.stringify(results, null, 2));
         return results?.map((r) => r?.item as IPetMetaData);
     }
 
@@ -36,16 +35,13 @@ export class PetsService {
         guildId: string,
         name: string
     ): Promise<Pets> {
-        const result = await this._prisma.pets.findMany({
+        return this._prisma.pets.findFirst({
             where: {
                 userId,
                 guildId,
                 name,
             },
-            take: 1,
         });
-
-        return result?.[0];
     }
 
     findMany(userId: string, guildId: string): Promise<Pets[]> {

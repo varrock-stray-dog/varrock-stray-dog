@@ -37,3 +37,23 @@ model Pets {
   createdAt                   DateTime        @default(now()) @map("created_at")
   updatedAt                   DateTime?       @updatedAt @map("updated_at")
 }
+
+model Items {
+  id                          String          @id @default(uuid())
+  
+  osrsId                      Int             @map("osrs_id") @unique()
+  name                        String
+  icon                        String
+  
+  highAlch                    Int             @map("high_alch")
+  lowAlch                     Int             @map("low_alch")
+  value                       Int
+  
+  geHigh                      Int?            @map("ge_high")
+  geLow                       Int?            @map("ge_low")
+  geHighTime                  DateTime?       @map("ge_high_time")
+  geLowTime                   DateTime?       @map("ge_low_time")
+  
+  createdAt                   DateTime        @default(now()) @map("created_at")
+  updatedAt                   DateTime?       @updatedAt @map("updated_at")
+}

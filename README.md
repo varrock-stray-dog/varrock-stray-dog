@@ -33,3 +33,7 @@ Simple utilities for the bot and api to use.
 ### @varrock-stray-dog/models
 
 The GraphQL models used by the Api & Bot
+
+### @varrock-stray-dog/item-sync
+
+A simple cli to sync items from osrs wiki to the database

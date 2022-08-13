@@ -33,31 +33,6 @@ export class SettingsService {
         return this._parseSettings(created);
     }
 
-    public async getPrefix(guildId: string) {
-        const guild = await this._prisma.settings.findUnique({
-            where: {
-                guildId,
-            },
-        });
-
-        if (!guild) {
-            return process.env.BOT_PREFIX;
-        }
-
-        return guild.prefix;
-    }
-
-    public setPrefix(guildId: string, prefix: string) {
-        return this._prisma.settings.update({
-            data: {
-                prefix,
-            },
-            where: {
-                guildId,
-            },
-        });
-    }
-
     private _parseSettings(obj: any): SettingsModel {
         if (!obj) {
             return obj;

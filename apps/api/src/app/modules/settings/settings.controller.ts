@@ -9,13 +9,6 @@ export class SettingsController {
     private _logger: Logger = new Logger('Settings Controller');
     public constructor(private readonly _service: SettingsService) {}
 
-    @MessagePattern({ cmd: 'api:settings:get-prefix' })
-    async getPrefix(guildId: string): Promise<string> {
-        this._logger.log('getPrefix');
-        const prefix = await this._service.getPrefix(guildId);
-        return prefix ?? process.env.BOT_PREFIX;
-    }
-
     @MessagePattern({ cmd: 'api:settings:find-or-create' })
     async findOrCreate(guildId: string): Promise<SettingsModel> {
         this._logger.log('findOrCreate');

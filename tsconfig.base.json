@@ -16,6 +16,7 @@
         "esModuleInterop": true,
         "baseUrl": ".",
         "paths": {
+            "@varrock-stray-dog/item-sync": ["packages/item-sync/src/index.ts"],
             "@varrock-stray-dog/models": ["packages/models/src/index.ts"],
             "@varrock-stray-dog/osrs-pets": ["packages/osrs-pets/src/index.ts"],
             "@varrock-stray-dog/utilities": ["packages/utilities/src/index.ts"]

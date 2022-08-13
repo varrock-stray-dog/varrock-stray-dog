@@ -12,7 +12,7 @@ RUN yarn
 
 COPY . ./
 
-RUN yarn build:bot
+RUN yarn build:sync
 
 
 ## Production
@@ -23,4 +23,4 @@ COPY prisma ./prisma
 COPY --from=build /opt/app/dist ./dist
 COPY --from=build /opt/app/node_modules ./node_modules
 
-CMD [ "yarn", "prod:bot" ]
+ENTRYPOINT [ "yarn", "sync" ]

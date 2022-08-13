@@ -22,6 +22,12 @@ services:
         tty: true
         depends_on:
             - redis
+    sync:
+        image: jurienhamaker/vsd-sync
+        env_file: .env
+        tty: true
+        depends_on:
+            - postgres
     redis:
         image: redis
         ports:
