@@ -7,9 +7,9 @@
     },
     "descriptions": {
         "root": "Dit zijn alle root-categorieën & instellingen die voor jou beschikbaar zijn.",
-        "language": "The language used for the bot.",
+        "language": "De taal die gebruikt wordt voor de bot.",
         "pets": {
-            "description": "A collection of settings specific to the pets module.",
+            "description": "Een collectie van instellingen specifiek voor de \"pets\" module.",
             "enabled": "Of de \"pets\" module beschikbaar is of niet."
         }
     }
