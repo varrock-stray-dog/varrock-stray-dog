@@ -1,0 +1,16 @@
+{
+    "setting": "Setting",
+    "show": {
+        "title": "Here are your settings:",
+        "location": "Currently at: {position}",
+        "current_value": "Current value: {value}"
+    },
+    "descriptions": {
+        "root": "These are all root categories & settings available to you.",
+        "language": "The language used for the bot",
+        "pets": {
+            "description": "A collection of settings specific to the pets module",
+            "enabled": "Wether pets are enabled or not."
+        }
+    }
+}
