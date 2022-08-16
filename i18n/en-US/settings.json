@@ -7,9 +7,9 @@
     },
     "descriptions": {
         "root": "These are all root categories & settings available to you.",
-        "language": "The language used for the bot.",
+        "language": "The language used for the bot",
         "pets": {
-            "description": "A collection of settings specific to the pets module.",
+            "description": "A collection of settings specific to the pets module",
             "enabled": "Wether pets are enabled or not."
         }
     }
