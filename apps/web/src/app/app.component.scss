@@ -1,5 +1,6 @@
 :host {
-    @apply w-screen h-screen bg-center bg-no-repeat bg-cover;
+    @apply p-8 py-10;
+    @apply min-w-[100vw] min-h-[100vh] bg-center bg-no-repeat bg-cover;
     @apply flex flex-col relative justify-start items-center;
     background-image: url('/assets/coming-soon.png');
 }
