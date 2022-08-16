@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { SettingsModel } from '@varrock-stray-dog/models';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable()
@@ -20,5 +21,16 @@ export class SettingsService {
     async getLanguage(guildId) {
         const settings = await this.get(guildId);
         return settings.language ?? 'en-US';
+    }
+
+    update(settings: SettingsModel) {
+        const settings$ = this._api.send(
+            {
+                cmd: 'api:settings:update',
+            },
+            settings
+        );
+
+        return lastValueFrom(settings$);
     }
 }

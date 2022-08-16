@@ -29,4 +29,11 @@ export class SettingsController {
             guildIds.map((guildId) => this._service.findOrCreate(guildId))
         );
     }
+
+    @MessagePattern({ cmd: 'api:settings:update' })
+    update(data: SettingsModel) {
+        this._logger.log('update');
+
+        return this._service.update(data);
+    }
 }

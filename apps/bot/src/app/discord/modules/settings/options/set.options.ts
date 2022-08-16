@@ -1,17 +1,10 @@
 import { StringOption } from 'necord';
 
-export class SettingsSetDto {
+export class SettingsSetLanguageDto {
     @StringOption({
-        name: 'setting',
-        description: 'The setting within the category',
+        name: 'language',
+        description: 'The language to set',
         required: true,
     })
-    setting: string;
-
-    @StringOption({
-        name: 'value',
-        description: 'The value of the setting',
-        required: true,
-    })
-    value: string;
+    language: string;
 }
