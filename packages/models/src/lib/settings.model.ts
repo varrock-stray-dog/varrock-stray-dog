@@ -2,12 +2,21 @@ import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
 import type { Settings } from '@prisma/client';
 
 @ObjectType()
-export class PetSettingsModel {
+export class SettingsModerationModel {
     @Field()
     enabled: boolean;
 
     @Field({ nullable: true })
-    moderatorRole?: string;
+    role?: string;
+}
+
+@ObjectType()
+export class PetSettingsModel {
+    @Field()
+    enabled: boolean;
+
+    @Field(() => SettingsModerationModel)
+    moderation?: SettingsModerationModel;
 }
 
 @ObjectType()
@@ -15,11 +24,8 @@ export class LootSettingsModel {
     @Field()
     enabled: boolean;
 
-    @Field({ nullable: true })
-    moderatorRole?: string;
-
-    @Field()
-    requireVerification: boolean;
+    @Field(() => SettingsModerationModel)
+    moderation?: SettingsModerationModel;
 }
 
 @ObjectType()

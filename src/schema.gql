@@ -28,8 +28,7 @@ scalar DateTime
 
 type LootSettingsModel {
   enabled: Boolean!
-  moderatorRole: String
-  requireVerification: Boolean!
+  moderation: SettingsModerationModel!
 }
 
 type PetMetaData {
@@ -42,7 +41,7 @@ type PetMetaData {
 
 type PetSettingsModel {
   enabled: Boolean!
-  moderatorRole: String
+  moderation: SettingsModerationModel!
 }
 
 type Query {
@@ -61,4 +60,9 @@ type SettingsModel {
   pets: PetSettingsModel!
   prefix: String!
   updatedAt: DateTime
+}
+
+type SettingsModerationModel {
+  enabled: Boolean!
+  role: String
 }

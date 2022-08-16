@@ -10,6 +10,15 @@ import { PetsModule } from './modules/pets/pets.module';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { SettingsModule } from './modules/settings/settings.module';
 
+import {
+    AcceptLanguageResolver,
+    CookieResolver,
+    HeaderResolver,
+    I18nModule,
+    QueryResolver,
+} from 'nestjs-i18n';
+import path from 'path';
+
 @Module({
     imports: [
         PrismaModule,
@@ -23,6 +32,19 @@ import { SettingsModule } from './modules/settings/settings.module';
             sortSchema: true,
             playground: false,
             plugins: [ApolloServerPluginLandingPageLocalDefault()],
+        }),
+        I18nModule.forRoot({
+            fallbackLanguage: 'en-US',
+            loaderOptions: {
+                path: path.join(process.cwd(), '/i18n/'),
+                watch: true,
+            },
+            resolvers: [
+                new QueryResolver(['lang', 'l']),
+                new HeaderResolver(['x-custom-lang']),
+                new CookieResolver(),
+                AcceptLanguageResolver,
+            ],
         }),
     ],
 })

@@ -2,24 +2,39 @@ import { Module } from '@nestjs/common';
 
 import { GatewayIntentBits } from 'discord.js';
 import { NecordModule } from 'necord';
-import { ApiModule } from './api.module';
+import { I18nModule } from 'nestjs-i18n';
+import path from 'path';
 import { SystemController } from './controllers/system.controller';
-import { commands } from './discord/commands';
 import { events } from './discord/events';
+import { modules } from './discord/modules';
+import { BotSharedModule } from './shared.module';
 
 @Module({
     imports: [
         NecordModule.forRoot({
+            prefix: '!',
             token: process.env.BOT_TOKEN,
-            intents: [GatewayIntentBits.Guilds],
+            intents: [
+                GatewayIntentBits.Guilds,
+                GatewayIntentBits.GuildMessages,
+                GatewayIntentBits.DirectMessages,
+            ],
             development:
                 process.env.NODE_ENV === 'development'
                     ? [process.env.DEVELOPMENT_GUILD_ID]
                     : false,
         }),
-        ApiModule,
+        I18nModule.forRoot({
+            fallbackLanguage: 'en-US',
+            loaderOptions: {
+                path: path.join(process.cwd(), '/i18n/'),
+                watch: true,
+            },
+        }),
+        BotSharedModule,
+        ...modules,
     ],
     controllers: [SystemController],
-    providers: [...events, ...commands],
+    providers: [...events],
 })
 export class BotModule {}

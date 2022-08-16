@@ -10,15 +10,15 @@ datasource db {
 model Settings {
   id                          String          @id @default(uuid())
   guildId                     String          @unique @map("guild_id")
-  prefix                      String          @default("~")
   language                    String          @default("en-US")
   
   petsEnabled                 Boolean         @default(true) @map("pets_enabled")
-  petsModeratorRole           String?         @map("pets_moderator_role")
+  petsModerationEnabled       Boolean         @default(false) @map("pets_moderation_enabled")
+  petsModerationRole          String?         @map("pets_moderation_role")
 
   lootEnabled                 Boolean         @default(true) @map("loot_enabled")
-  lootRequireVerification     Boolean         @default(true) @map("loot_require_verification")
-  lootModeratorRole           String?         @map("loot_moderator_role")
+  lootModerationEnabled       Boolean         @default(false) @map("loot_moderation_enabled")
+  lootModerationRole          String?         @map("loot_moderation_role")
   
   createdAt                   DateTime        @default(now()) @map("created_at")
   updatedAt                   DateTime?       @updatedAt @map("updated_at")

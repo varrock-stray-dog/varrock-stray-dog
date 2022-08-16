@@ -20,6 +20,7 @@ FROM base as production
 
 COPY package.json ./
 COPY prisma ./prisma
+COPY i18n ./i18n
 COPY --from=build /opt/app/dist ./dist
 COPY --from=build /opt/app/node_modules ./node_modules
 
