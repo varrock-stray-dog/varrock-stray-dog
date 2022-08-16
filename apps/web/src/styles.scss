@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
     font-family: 'RuneScape UF';
     src: url('/assets/fonts/RuneScape-UF.woff2') format('woff2'),
@@ -7,9 +11,16 @@
     font-display: swap;
 }
 
-html,
-body {
-    padding: 0;
-    margin: 0;
-    font-family: 'RuneScape UF';
+@layer base {
+    html,
+    body {
+        @apply font-osrs text-yellow;
+
+        h1,
+        h2,
+        p,
+        a {
+            @apply drop-shadow-osrs tracking-wide whitespace-pre-line leading-5;
+        }
+    }
 }

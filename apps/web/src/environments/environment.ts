@@ -2,11 +2,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { baseEnvironment } from './environment.base';
+
 export const environment = {
+    ...baseEnvironment,
     production: false,
     apiUrl: 'http://localhost:6969/graphql',
-    inviteUrl:
-        'https://discord.com/oauth2/authorize?client_id=541668949373485076&scope=bot&permissions=268627008',
 };
 
 /*

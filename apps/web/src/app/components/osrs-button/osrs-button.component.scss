@@ -1,0 +1,16 @@
+:host {
+    a {
+        @apply cursor-pointer;
+        @apply flex flex-col items-center justify-center;
+        @apply h-32 w-40 p-4;
+        @apply text-base text-white text-xl;
+        @apply bg-no-repeat bg-contain bg-center;
+        @apply drop-shadow-none;
+
+        background-image: url('https://www.runescape.com/img/rsp777/splash/compare_users.gif');
+    }
+
+    &:hover {
+        @apply underline;
+    }
+}

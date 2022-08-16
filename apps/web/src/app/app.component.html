@@ -1,12 +1,29 @@
-<div class="message">
-    <h1>Coming soon to your Clan's Discord server</h1>
-    <div class="name">
-        <h2>Varrock Stray Dog</h2>
-        <p>Loot & Pet tracking Bot</p>
+<div class="w-auto max-w-[800px] p-8 mt-[10vh] flex flex-col">
+    <h1 class="flex-1 text-4xl">Coming soon to your Clan's Discord server</h1>
+    <div class="flex flex-col self-end flex-1 mr-8 mt-3">
+        <h2 class="text-4xl">Varrock Stray Dog</h2>
+        <p class="-mt-3">Loot & Pet tracking Bot</p>
     </div>
 </div>
 
-<div class="server-stats" *ngIf="apiData">
+<div class="flex gap-3 mt-10">
+    <varrock-stray-dog-osrs-button [href]="inviteUrl" target="_INVITE">
+        <span>Try me out?</span>
+        <span>Invite BETA bot</span>
+    </varrock-stray-dog-osrs-button>
+
+    <varrock-stray-dog-osrs-button [href]="discordUrl" target="_DISCORD">
+        <span>Need help?</span>
+        <span>Join discord</span>
+    </varrock-stray-dog-osrs-button>
+
+    <varrock-stray-dog-osrs-button>
+        <span>What can I do?</span>
+        <span>View commands</span>
+    </varrock-stray-dog-osrs-button>
+</div>
+
+<div class="absolute top-8 left-8 flex flex-col" *ngIf="apiData">
     <p>API: {{ apiData ? 'Online' : 'Offline' }}</p>
     <ng-container *ngIf="apiData">
         <p>
@@ -34,7 +51,9 @@
         <p>Guilds: {{ apiData?.bot?.guilds ?? 0 }}</p>
         <p>Users: {{ apiData?.bot?.users ?? 0 }}</p>
     </ng-container>
+</div>
 
-    <br />
-    <a [href]="inviteUrl" target="_INVITE">Invite BETA bot</a>
+<div class="absolute bottom-8 left-8 flex flex-col">
+    <a href="https://github.com/varrock-stray-dog" target="_GITHUB">Github</a>
+    <a href="https://jurien.dev" target="_me">Author</a>
 </div>

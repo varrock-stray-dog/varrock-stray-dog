@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit {
     public apiData: any | undefined;
     public inviteUrl = environment.inviteUrl;
+    public discordUrl = environment.discordUrl;
 
     constructor(private _apollo: Apollo) {}
 
