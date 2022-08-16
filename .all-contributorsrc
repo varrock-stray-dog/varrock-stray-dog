@@ -1,14 +1,28 @@
 {
-	"projectName": "varrock-stray-dog",
-	"projectOwner": "varrock-stray-dog",
-	"repoType": "github",
-	"repoHost": "https://github.com",
-	"files": ["README.md"],
-	"imageSize": 100,
-	"commit": true,
-	"commitConvention": "angular",
-	"contributors": [
-	],
-	"contributorsPerLine": 4,
-	"skipCi": true
+  "projectName": "varrock-stray-dog",
+  "projectOwner": "varrock-stray-dog",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "jurienhamaker",
+      "name": "Jurien Hamaker",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5418114?v=4",
+      "profile": "https://jurien.dev",
+      "contributions": [
+        "infra",
+        "test",
+        "doc",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 4,
+  "skipCi": true
 }
