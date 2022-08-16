@@ -1,0 +1,14 @@
+{
+	"projectName": "varrock-stray-dog",
+	"projectOwner": "varrock-stray-dog",
+	"repoType": "github",
+	"repoHost": "https://github.com",
+	"files": ["README.md"],
+	"imageSize": 100,
+	"commit": true,
+	"commitConvention": "angular",
+	"contributors": [
+	],
+	"contributorsPerLine": 4,
+	"skipCi": true
+}
