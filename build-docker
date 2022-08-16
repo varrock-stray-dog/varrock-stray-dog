@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[ -z "$2" ] && docker build . -t "jurienhamaker/vsd-$1" -f ./.docker/images/$1.Dockerfile --no-cache
+
+docker push "jurienhamaker/vsd-$1"
