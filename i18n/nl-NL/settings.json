@@ -1,16 +1,16 @@
 {
-    "setting": "Setting",
+    "setting": "Instelling",
     "show": {
-        "title": "Here are your settings:",
-        "location": "Currently at: {position}",
-        "current_value": "Current value: {value}"
+        "title": "Hier zijn je instellingen:",
+        "location": "Huidige positie: {position}",
+        "current_value": "Huidige waarde: {value}"
     },
     "descriptions": {
-        "root": "These are all root categories & settings available to you.",
-        "language": "The language used for the bot",
+        "root": "Dit zijn alle root-categorieën & instellingen die voor jou beschikbaar zijn.",
+        "language": "De taal die gebruikt wordt voor de bot.",
         "pets": {
-            "description": "A collection of settings specific to the pets module",
-            "enabled": "Wether pets are enabled or not."
+            "description": "Een collectie van instellingen specifiek voor de \"pets\" module.",
+            "enabled": "Of de \"pets\" module beschikbaar is of niet."
         }
     }
 }
