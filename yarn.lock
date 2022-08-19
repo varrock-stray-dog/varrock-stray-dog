@@ -2908,6 +2908,11 @@
   resolved "https://registry.yarnpkg.com/@sapphire/snowflake/-/snowflake-3.2.2.tgz#faacdc1b5f7c43145a71eddba917de2b707ef780"
   integrity sha512-ula2O0kpSZtX9rKXNeQMrHwNd7E4jPDJYUXmEGTFdMRfyfMw+FPyh04oKMjAiDuOi64bYgVkOV3MjK+loImFhQ==
 
+"@sapphire/utilities@^3.9.1":
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/@sapphire/utilities/-/utilities-3.9.1.tgz#bc495fcfc727625aaf265bf4ef06879b2c857851"
+  integrity sha512-EGXyrpHKQvrmrhgm7ZWMoc2ojpf1D7tb1AcqSjS3n4jKtsRNktuDxOShwXRco5ZMR9yxBCXRgHpuFOZlCn7CLA==
+
 "@schematics/angular@14.1.2", "@schematics/angular@>=14.0.0", "@schematics/angular@~14.1.0":
   version "14.1.2"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-14.1.2.tgz#edc828c3bf3e5eb9c55d11e560d3fd680819021c"
@@ -8627,18 +8632,6 @@ neo-async@^2.6.0, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nestjs-i18n@^9.1.5:
-  version "9.1.5"
-  resolved "https://registry.yarnpkg.com/nestjs-i18n/-/nestjs-i18n-9.1.5.tgz#f847f6497342d6f26492bc47f8b3dc8e855f90d6"
-  integrity sha512-E6eXt9mmzBErq/UlylNUCyc3OGjFrqN85knSE74ATyl4E6YoLTeJQgRUGr6kHtOgCXzD7Dn0wsao5DRuczQZPw==
-  dependencies:
-    accept-language-parser "^1.5.0"
-    chokidar "^3.5.3"
-    cookie "^0.5.0"
-    iterare "^1.2.1"
-    js-yaml "^4.1.0"
-    string-format "^2.0.0"
-
 ngx-build-plus@^14.0.0:
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/ngx-build-plus/-/ngx-build-plus-14.0.0.tgz#7e2b896072773159c61684c287d4eb8dc5e8b5d5"
@@ -11741,6 +11734,18 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
+
+vsd-i18n@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/vsd-i18n/-/vsd-i18n-10.0.1.tgz#87c792e8605e3ab6acef4a915363976113ffe3b1"
+  integrity sha512-isZWa9sVq/F/h0wDtyMfFy7atwVzOSRL8UbUOgobhlcHoa90sw7e/EWvqdHfVaUZt/TEXyhHaJxycxWlJdHPLA==
+  dependencies:
+    accept-language-parser "^1.5.0"
+    chokidar "^3.5.3"
+    cookie "^0.5.0"
+    iterare "^1.2.1"
+    js-yaml "^4.1.0"
+    string-format "^2.0.0"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"

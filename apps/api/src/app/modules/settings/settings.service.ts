@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Settings } from '@prisma/client';
+import { isObject } from '@sapphire/utilities';
 import type { SettingsModel } from '@varrock-stray-dog/models';
-import { camelCaseToSnakeCase, isObject } from '@varrock-stray-dog/utilities';
+import { camelCaseToSnakeCase } from '@varrock-stray-dog/utilities';
 import { PrismaClient } from '../prisma/prisma.client';
 
 @Injectable()

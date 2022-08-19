@@ -58,7 +58,6 @@ type SettingsModel {
   language: String!
   loot: LootSettingsModel!
   pets: PetSettingsModel!
-  prefix: String!
   updatedAt: DateTime
 }
 

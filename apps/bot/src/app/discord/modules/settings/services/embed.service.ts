@@ -1,16 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import {
-    isObject,
-    woofify,
-    zeroWidthSpace,
-} from '@varrock-stray-dog/utilities';
+import { isObject } from '@sapphire/utilities';
+import { woofify, zeroWidthSpace } from '@varrock-stray-dog/utilities';
 import { I18nService } from 'apps/bot/src/app/services';
 import { EmbedBuilder, Interaction } from 'discord.js';
+import { bannedSettingsKeys } from '../constants';
 
 @Injectable()
 export class SettingsEmbedService {
-    private _bannedKeys = ['id', 'guildId', 'createdAt', 'updatedAt'];
-
     constructor(private _i18n: I18nService) {}
 
     public createSettingsEmbed(
@@ -29,7 +25,7 @@ export class SettingsEmbedService {
 
     private _createList(settings: any) {
         return Object.keys(settings)
-            .filter((key) => this._bannedKeys.indexOf(key) === -1)
+            .filter((key) => bannedSettingsKeys.indexOf(key) === -1)
             .map((key) => ({
                 type: isObject(settings[key]) ? 'folder' : 'setting',
                 name: key,

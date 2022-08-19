@@ -5,6 +5,15 @@
         "location": "Currently at: {position}",
         "current_value": "Current value: {value}"
     },
+    "set": {
+        "success": "Successfully updated the value of `{path}` to `{value}`",
+        "errors": {
+            "choose_from_autocomplete": "please select one from the autocomplete options",
+            "language": "The language `{value}` is not available, $t(settings.errors.choose_from_autocomplete).",
+            "boolean": "The value must be a valid boolean, $t(settings.errors.choose_from_autocomplete).",
+            "role": "Invalid role provided, $t(settings.errors.choose_from_autocomplete)."
+        }
+    },
     "descriptions": {
         "root": "These are all root categories & settings available to you.",
         "language": "The language used for the bot.",

@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 
 import { GatewayIntentBits } from 'discord.js';
-import { NecordModule } from 'necord';
-import { I18nModule } from 'nestjs-i18n';
+import { NecordExecutionContext, NecordModule } from 'necord';
 import path from 'path';
+import { I18nModule } from 'vsd-i18n';
 import { SystemController } from './controllers/system.controller';
 import { events } from './discord/events';
 import { modules } from './discord/modules';
+import { NecordMetaDataResolver } from './i18n.resolver';
 import { BotSharedModule } from './shared.module';
 
 @Module({
@@ -30,6 +31,17 @@ import { BotSharedModule } from './shared.module';
                 path: path.join(process.cwd(), '/i18n/'),
                 watch: true,
             },
+            contexts: [
+                {
+                    type: 'necord',
+                    getContext: (context: NecordExecutionContext) => {
+                        console.log('Am I called?');
+
+                        return context.getArgByIndex(0);
+                    },
+                },
+            ],
+            resolvers: [NecordMetaDataResolver],
         }),
         BotSharedModule,
         ...modules,

@@ -1,55 +1,80 @@
-import { Logger } from '@nestjs/common';
-import { SettingsService } from 'apps/bot/src/app/services';
-import { readdir } from 'fs/promises';
+import { Logger, UseInterceptors } from '@nestjs/common';
+import { settingsKeyValidation } from '@varrock-stray-dog/models';
+import { setObjectValueByPath } from '@varrock-stray-dog/utilities';
 import { Context, Options, SlashCommandContext, Subcommand } from 'necord';
-import path from 'path';
-import { SettingsSetLanguageDto } from '../options/set.options';
+import { I18nService, SettingsService } from '../../../../services';
+import { keyPathToName } from '../constants';
+import { SetAutocompleteInterceptor } from '../interceptors/set.interceptor';
+import { SettingsSetDto } from '../options/set.options';
 import { SettingsCommandsDecorator } from '../settings.decorator';
-
-@SettingsCommandsDecorator({ name: 'set', description: 'Set a setting' })
+@SettingsCommandsDecorator()
 export class SettingsSetCommands {
-    private readonly logger = new Logger(SettingsSetCommands.name);
+    private readonly _logger = new Logger(SettingsSetCommands.name);
 
-    private _availableLanguages = ['en-US'];
+    constructor(
+        private _settingsService: SettingsService,
+        private _i18n: I18nService
+    ) {}
 
-    constructor(private _settingsService: SettingsService) {
-        this._loadAvailableLanguages();
-    }
-
+    @UseInterceptors(SetAutocompleteInterceptor)
     @Subcommand({
-        name: 'language',
-        description: 'Set the language settings',
+        name: 'set',
+        description: 'Set a setting',
     })
     public async setLanguage(
         @Context() [interaction]: SlashCommandContext,
-        @Options() { language }: SettingsSetLanguageDto
+        @Options() { key, value }: SettingsSetDto
     ) {
-        if (this._availableLanguages.indexOf(language) === -1) {
-            console.log(this._availableLanguages);
-            return interaction.reply(
-                `The language \`${language}\` is not available, please choose one of the following:
-${this._availableLanguages.map((l) => `- ${l}`).join('\n')}`
+        this._logger.log(`${interaction.user.tag} used settings.set command`);
+
+        const keySplitted = key.split('.');
+
+        let validation = settingsKeyValidation;
+        for (const child of keySplitted) {
+            validation = validation.shape[child];
+        }
+
+        const valid = validation.run(value);
+
+        this._i18n.setInteraction(interaction);
+
+        if (!valid.success) {
+            if (key === 'language') {
+                const translatedError = await this._i18n.translate(
+                    'settings.set.errors.language',
+                    { value }
+                );
+                return interaction.reply(translatedError);
+            }
+
+            const translatedError = await this._i18n.translate(
+                'settings.set.errors.boolean'
             );
+            return interaction.reply(translatedError);
+        }
+
+        if (key.endsWith('role')) {
+            const role = await interaction.guild.roles.fetch(value);
+            if (!role) {
+                const translatedError = await this._i18n.translate(
+                    'settings.set.errors.role'
+                );
+                return interaction.reply(translatedError);
+            }
         }
 
         const settings = await this._settingsService.get(interaction.guildId);
+        const newSettings = setObjectValueByPath(settings, key, valid.value);
 
-        await this._settingsService.update({
-            ...settings,
-            language,
-        });
+        await this._settingsService.update(newSettings);
 
-        return interaction.reply({
-            content: `Set language: ${language}`,
-        });
-    }
-
-    private async _loadAvailableLanguages() {
-        const files = await readdir(path.join(process.cwd(), 'i18n'), {
-            withFileTypes: true,
-        });
-        this._availableLanguages = files
-            .filter((file) => file.isDirectory())
-            .map((d) => d.name);
+        const translatedSuccess = await this._i18n.translate(
+            'settings.set.success',
+            {
+                path: keyPathToName(key, false),
+                value,
+            }
+        );
+        return interaction.reply(translatedSuccess);
     }
 }

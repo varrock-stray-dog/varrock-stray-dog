@@ -1,6 +1,6 @@
 import { Injectable, Scope } from '@nestjs/common';
 import { Interaction } from 'discord.js';
-import { I18nService as I18n } from 'nestjs-i18n';
+import { I18nService as I18n } from 'vsd-i18n';
 import { SettingsService } from './settings.service';
 
 type ArgsType =
@@ -39,9 +39,8 @@ export class I18nService {
         i?: Interaction,
         lang?: string
     ) {
-        lang = lang ?? (await this._getLang(i));
+        // lang = lang ?? (await this._getLang(i));
         return this._i18n.translate(key, {
-            lang,
             args,
         });
     }

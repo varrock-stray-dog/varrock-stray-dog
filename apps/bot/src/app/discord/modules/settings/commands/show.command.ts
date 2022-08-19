@@ -24,7 +24,7 @@ export class SettingsShowCommands {
         @Context() [interaction]: SlashCommandContext,
         @Options() { key }: SettingsShowDto
     ) {
-        this._logger.log(`${interaction.user.tag} used ping command`);
+        this._logger.log(`${interaction.user.tag} used settings.show command`);
         await interaction.reply({ content: loadingMessage() });
 
         const settings = await this._settingsService.get(interaction.guildId);
